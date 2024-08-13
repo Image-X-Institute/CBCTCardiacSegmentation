@@ -69,9 +69,9 @@ In a command line (such as anaconda command prompt) navigate to the directory th
  ```
  
  The different segmentation methods are:
- -Synthetic: A synthetic CT is created by deforming a planning CT to match the CBCT. CT cardiac segmentation is then applied to this image. 
- -Transform: The Planning CT is first segmented. The planning CT and CBCT are deformably registered and the output transformation is used to map the planning CT segmentations to the CBCT.
- -Direct: The CT segmentation method is directly applied to the CBCT image. May perform unreliably, particularly for noisy CBCT images. 
+ - Synthetic: A synthetic CT is created by deforming a planning CT to match the CBCT. CT cardiac segmentation is then applied to this image.
+ - Transform: The Planning CT is first segmented. The planning CT and CBCT are deformably registered and the output transformation is used to map the planning CT segmentations to the CBCT.
+ - Direct: The CT segmentation method is directly applied to the CBCT image. May perform unreliably, particularly for noisy CBCT images. 
  
  
 ## Directory Structure
