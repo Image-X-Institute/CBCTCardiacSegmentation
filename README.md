@@ -1,7 +1,7 @@
 # CBCTCardiacSegmentation
 
-[![test](https://github.com/Image-X-Institute/CTHeadDeformation/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/Image-X-Institute/CTHeadDeformation/actions/workflows/python-app.yml)
-[![codecov](https://codecov.io/gh/Image-X-Institute/CTHeadDeformation/branch/main/graph/badge.svg?token=WETEA11B5D)](https://codecov.io/gh/Image-X-Institute/CTHeadDeformation)
+[![test](https://github.com/Image-X-Institute/CBCTCardiacSegmentation/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/Image-X-Institute/CBCTCardiacSegmentation/actions/workflows/python-app.yml)
+[![codecov](https://codecov.io/gh/Image-X-Institute/CBCTCardiacSegmentation/branch/main/graph/badge.svg?token=WETEA11B5D)](https://codecov.io/gh/Image-X-Institute/CBCTCardiacSegmentation)
 
 **Author:** *Mark Gardner*
 
