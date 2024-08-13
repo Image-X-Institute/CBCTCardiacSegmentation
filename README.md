@@ -5,6 +5,8 @@
 
 **Author:** *Mark Gardner*
 
+![CBCTExampleImage](https://github.com/Image-X-Institute/CBCTCardiacSegmentation/blob/main/docs/_images/GTHeartSegs.png?raw=true)
+
 This code will generate cardiac segmentations in CBCT images. The input is dicom or volume files of a CBCT image and an optional planning CT and will output dicom and nifti segmentations of cardiac segmentations that are compatible with the input CBCT image. **Currently this works in Linux only**
 
 
