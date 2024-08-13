@@ -37,7 +37,7 @@ OutputDir = "<Directory where data was downloaded to>/4D-Lung/100_HM10395/Cardia
 ```
 
 ### Run in python script
-See [DemonstrateCBCTSegmentation.py](https://github.sydney.edu.au/Image-X/CBCTCardiacSegmentation/blob/master/CBCTCardiacSegmentation/DemonstrateCBCTSegmentation.py) for an example python script. 
+See [DemonstrateCBCTSegmentation.py](https://github.com/Image-X-Institute/CBCTCardiacSegmentation/blob/master/CBCTCardiacSegmentation/DemonstrateCBCTSegmentation.py) for an example python script. 
 ```
 from  CBCTCardiacSegmentation import CreateCBCTSegmentations
 CreateCBCTSegmentations(CBCTDicomDir,OutputDir=OutputDir,PlanningCTDir=CTDicomDir)
