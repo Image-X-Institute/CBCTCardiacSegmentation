@@ -101,7 +101,7 @@ def test_NiftiCBCTSegmentationGeneration():
     StructFile = ''
     
     for SegMethod in SegmentationMethods:
-    
+        print(SegmentationMethods)
         OutputDir = './CBCTSegmentations'    
     
         CreateCBCTSegmentations(CBCTDir,OutputDir=OutputDir,
@@ -122,6 +122,7 @@ def test_NiftiCBCTSegmentationGeneration():
         assert Path(StructFile).exists(),'Dicom Struct File {} does not exist'.format(StructFile)
     
         rmtree(OutputDir)    
+    rmtree(data_path) 
     
 def test_DicomCBCTSegmentationGeneration():
     
@@ -140,7 +141,7 @@ def test_DicomCBCTSegmentationGeneration():
     StructFile = ''
     
     for SegMethod in SegmentationMethods:
-    
+        print(SegmentationMethods)
         OutputDir = './CBCTSegmentations'    
     
         CreateCBCTSegmentations(CBCTDir,OutputDir=OutputDir,
@@ -152,3 +153,5 @@ def test_DicomCBCTSegmentationGeneration():
         
     
         rmtree(OutputDir)    
+        
+    rmtree(data_path) 
