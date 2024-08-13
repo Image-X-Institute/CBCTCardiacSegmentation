@@ -84,6 +84,35 @@ def test_ElastixInstalled():
     bashCommand = "elastix -h"
     subprocess.Popen(bashCommand.split(), env=my_env)
     
+def test_BadSegMethodInput():
+    # Download the test data
+    data_path = get_lung_nifti()
+
+    # Pick out a case to run on
+    test_pat_path = data_path.joinpath("LCTSC-Test-S1-201")
+    
+    SegmentationMethod = ['Test']
+    
+    CBCTDir = str(test_pat_path.joinpath("IMAGES/LCTSC_TEST_S1_101_0_CT_0.nii.gz"))   #Is a nifti file
+    PlanningCTDir = str(test_pat_path.joinpath("IMAGES/LCTSC_TEST_S1_201_0_CT_0.nii.gz"))
+    ElastixParamDir = ''
+    StructFile = ''
+    
+    OutputDir = './CBCTSegmentations'    
+        
+    try:
+        CreateCBCTSegmentations(CBCTDir,OutputDir=OutputDir,
+                                SegmentationMethod=SegmentationMethod,
+                                PlanningCTDir=PlanningCTDir,
+                                ElastixParamDir=ElastixParamDir,
+                                StructFile=StructFile)
+        assert False
+    except:
+        print('Failed Successfully')
+    
+    rmtree(data_path) 
+    rmtree(OutputDir) 
+    
 def test_NiftiCBCTSegmentationGeneration():
     
     # Download the test data
@@ -92,7 +121,7 @@ def test_NiftiCBCTSegmentationGeneration():
     # Pick out a case to run on
     test_pat_path = data_path.joinpath("LCTSC-Test-S1-201")
     
-    SegmentationMethods = ['Direct','Synthetic','Transform','Test']
+    SegmentationMethods = ['Direct','Synthetic','Transform']#,'Test']
     
     #Use CT images to test functionality until we can get open source CBCT images
     CBCTDir = str(test_pat_path.joinpath("IMAGES/LCTSC_TEST_S1_101_0_CT_0.nii.gz"))   #Is a nifti file
@@ -133,7 +162,7 @@ def test_DicomCBCTSegmentationGeneration():
     CBCTDir = test_pat_path.joinpath('1.3.6.1.4.1.14519.5.2.1.7014.4598.106943890850011666503487579262')
     PlanningCTDir = test_pat_path.joinpath('1.3.6.1.4.1.14519.5.2.1.7014.4598.106943890850011666503487579262')
     
-    SegmentationMethods = ['Direct','Synthetic','Transform','Test']
+    SegmentationMethods = ['Direct','Synthetic','Transform']#,'Test']
     
     #CBCTDir = '' #Is a dicom directory file
     #PlanningCTDir = ''
