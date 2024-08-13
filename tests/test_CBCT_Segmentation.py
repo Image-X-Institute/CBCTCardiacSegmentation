@@ -9,17 +9,12 @@ import os
 import subprocess
 from pathlib import Path
 import sys
-import numpy as np
 from shutil import rmtree
-import glob
-import json
 from platform import system
 import SimpleITK as sitk
 
 from platipy.imaging.tests.data import get_lung_nifti, get_lung_dicom
 from platipy.imaging.projects.cardiac.run import run_hybrid_segmentation
-from platipy.imaging import ImageVisualiser
-from platipy.imaging.label.utils import get_com
 
 '''
 For testing/ example purposes it's safest to manually append the path variable to ensure our 
@@ -34,9 +29,16 @@ from CBCTCardiacSegmentation.CreateCBCTSegmentations import CreateCBCTSegmentati
 from CBCTCardiacSegmentation.SegUtil import DoDicomProcessing 
 
 def test_DicomProcessing():
-    CTDicomDir = ''
+    # Download the test data
+    data_path = get_lung_dicom()
+    test_pat_path = data_path.joinpath("LCTSC-Test-S1-101")
+    
+    CTDicomDir = test_pat_path.joinpath('1.3.6.1.4.1.14519.5.2.1.7014.4598.106943890850011666503487579262')
     OutputDir='./DicomProcessing'
     DoDicomProcessing(CTDicomDir,OutputDir=OutputDir)
+    
+    rmtree(data_path)
+    rmtree(OutputDir)
     
 
 def test_PlatipyCTSegmentation():
@@ -125,11 +127,15 @@ def test_DicomCBCTSegmentationGeneration():
     
     # Download the test data
     data_path = get_lung_dicom()
+    test_pat_path = data_path.joinpath("LCTSC-Test-S1-101")
+    
+    CBCTDir = test_pat_path.joinpath('1.3.6.1.4.1.14519.5.2.1.7014.4598.106943890850011666503487579262')
+    PlanningCTDir = test_pat_path.joinpath('1.3.6.1.4.1.14519.5.2.1.7014.4598.106943890850011666503487579262')
     
     SegmentationMethods = ['Direct','Synthetic','Transform','Test']
     
-    CBCTDir = '' #Is a dicom directory file
-    PlanningCTDir = ''
+    #CBCTDir = '' #Is a dicom directory file
+    #PlanningCTDir = ''
     ElastixParamDir = ''
     StructFile = ''
     

@@ -124,6 +124,11 @@ def PrepareCTData(CTDir,OutputDir='',StructFile='',PreviousNiftiFiles=[],KeepTem
     elif isfile(CTDir):
         CTNiftiFile = CTDir
         StructNiftiDir = ''
+        
+    else:
+        print('File type neither directory or file')
+        CTNiftiFile = ''
+        StructNiftiDir = ''
 
     return CTNiftiFile,StructNiftiDir
 
