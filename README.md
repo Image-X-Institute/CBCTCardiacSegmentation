@@ -1,7 +1,7 @@
 # CBCTCardiacSegmentation
 
 [![test](https://github.com/Image-X-Institute/CBCTCardiacSegmentation/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/Image-X-Institute/CBCTCardiacSegmentation/actions/workflows/python-app.yml)
-[![codecov](https://codecov.io/gh/Image-X-Institute/CBCTCardiacSegmentation/branch/main/graph/badge.svg?token=WETEA11B5D)](https://codecov.io/gh/Image-X-Institute/CBCTCardiacSegmentation)
+[![codecov](https://codecov.io/github/Image-X-Institute/CBCTCardiacSegmentation/graph/badge.svg?token=YKpvfVsa5X)](https://codecov.io/github/Image-X-Institute/CBCTCardiacSegmentation)
 
 **Author:** *Mark Gardner*
 
