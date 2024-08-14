@@ -27,6 +27,7 @@ sys.path.insert(0, str(this_file_loc.parent.parent))
 # sys.path.append means that the path above is the LAST place
 from CBCTCardiacSegmentation.CreateCBCTSegmentations import CreateCBCTSegmentations
 from CBCTCardiacSegmentation.SegUtil import DoDicomProcessing 
+from CBCTCardiacSegmentation.DicomHelper import WriteDicomStructs
 
 def test_DicomProcessing():
     # Download the test data
@@ -153,7 +154,9 @@ def test_NiftiCBCTSegmentationGeneration():
     
         rmtree(OutputDir)    
     rmtree(data_path) 
-    
+
+"""    
+Delay testing until we can find some dicom data to test with
 def test_DicomCBCTSegmentationGeneration():
     
     # Download the test data
@@ -184,4 +187,27 @@ def test_DicomCBCTSegmentationGeneration():
     
         rmtree(OutputDir)    
         
+"""
+
+def test_NiftiToDicomStruct():
+    
+    data_path = get_lung_dicom()
+    test_pat_path = data_path.joinpath("LCTSC-Test-S1-101")
+    
+    CTDicom = test_pat_path.joinpath('1.3.6.1.4.1.14519.5.2.1.7014.4598.106943890850011666503487579262')    
+    StructDicom = test_pat_path.joinpath('1.3.6.1.4.1.14519.5.2.1.7014.4598.280355341349691222365783556597/1-102.dcm')    
+    
+    OutputDir = './CBCTSegmentations'  
+    
+    DoDicomProcessing(CTDicom,OutputDir=OutputDir,StructFile = StructDicom)
+    
+    NiftiStructDir = os.path.join(OutputDir,'Nifti','LCTSC_TEST_S1_101','STRUCTURES')
+    
+    WriteDicomStructs(NiftiStructDir, CTDicom, OutputDir, CTPat='*dcm')
+    
+    OutputStructFile = os.path.join(OutputDir,'struct.dcm')
+    
+    assert Path(OutputStructFile).exists(),'Output Struct {} was not created successfully'.format(OutputStructFile)
+    
     rmtree(data_path) 
+    rmtree(OutputDir)
