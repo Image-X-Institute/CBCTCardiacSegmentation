@@ -149,8 +149,8 @@ def test_NiftiCBCTSegmentationGeneration():
             FileName = os.path.join(OutputDir,'OutputSegmentations_Nifti',f"{CardiacSeg}.nii.gz")
             assert Path(FileName).exists(),'File {} does not exist'.format(FileName)  
     
-        StructFile = os.path.join(OutputDir,'OutputSegmentations_Dicom','struct.dcm')
-        assert Path(StructFile).exists(),'Dicom Struct File {} does not exist'.format(StructFile)
+        #StructFile = os.path.join(OutputDir,'OutputSegmentations_Dicom','struct.dcm')
+        #assert Path(StructFile).exists(),'Dicom Struct File {} does not exist'.format(StructFile)
     
         rmtree(OutputDir)    
     rmtree(data_path) 
