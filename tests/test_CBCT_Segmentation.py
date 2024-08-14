@@ -120,17 +120,18 @@ def test_NiftiCBCTSegmentationGeneration():
 
     # Pick out a case to run on
     test_pat_path = data_path.joinpath("LCTSC-Test-S1-201")
+    test_pat_path2 = data_path.joinpath("LCTSC-Test-S1-101")
     
     SegmentationMethods = ['Direct','Synthetic','Transform']#,'Test']
     
     #Use CT images to test functionality until we can get open source CBCT images
-    CBCTDir = str(test_pat_path.joinpath("IMAGES/LCTSC_TEST_S1_101_0_CT_0.nii.gz"))   #Is a nifti file
+    CBCTDir = str(test_pat_path2.joinpath("IMAGES/LCTSC_TEST_S1_101_0_CT_0.nii.gz"))   #Is a nifti file
     PlanningCTDir = str(test_pat_path.joinpath("IMAGES/LCTSC_TEST_S1_201_0_CT_0.nii.gz"))
     ElastixParamDir = ''
     StructFile = ''
     
     for SegMethod in SegmentationMethods:
-        print(SegmentationMethods)
+        print(SegMethod)
         OutputDir = './CBCTSegmentations'    
     
         CreateCBCTSegmentations(CBCTDir,OutputDir=OutputDir,
@@ -170,7 +171,7 @@ def test_DicomCBCTSegmentationGeneration():
     StructFile = ''
     
     for SegMethod in SegmentationMethods:
-        print(SegmentationMethods)
+        print(SegMethod)
         OutputDir = './CBCTSegmentations'    
     
         CreateCBCTSegmentations(CBCTDir,OutputDir=OutputDir,
