@@ -151,7 +151,7 @@ def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',Segmentation
     """
     Convert the segmentations to Dicom
     """
-    if os.path.is_dir(CBCTDir):
+    if os.path.isdir(CBCTDir):
         print('Converting segmentations to Dicom Format')
     
         DcmOutputDir = os.path.join(OutputDir, 'OutputSegmentations_Dicom')
