@@ -113,7 +113,7 @@ def test_BadSegMethodInput():
     
     rmtree(data_path) 
     rmtree(OutputDir) 
-    
+
 def test_NiftiCBCTSegmentationGeneration():
     
     # Download the test data
@@ -131,6 +131,10 @@ def test_NiftiCBCTSegmentationGeneration():
     ElastixParamDir = ''
     StructFile = ''
     
+    #Define Elastix directories
+    home_dir = Path(os.path.expanduser('~'))  # may have to update for github system
+    elastix_dir = home_dir / 'ElastixDownload' / 'elastix-5.0.1-linux'
+    
     for SegMethod in SegmentationMethods:
         print(SegMethod)
         OutputDir = './CBCTSegmentations'    
@@ -139,7 +143,8 @@ def test_NiftiCBCTSegmentationGeneration():
                                 SegmentationMethod=SegMethod,
                                 PlanningCTDir=PlanningCTDir,
                                 ElastixParamDir=ElastixParamDir,
-                                StructFile=StructFile)
+                                StructFile=StructFile,
+                                ElastixRunDir=elastix_dir)
     
         CardiacSegList = ['Heart','A_Aorta','A_Cflx','A_Coronary_L','A_Coronary_R','A_LAD','A_Pulmonary','Atrium_L',
                           'Atrium_R','CN_Atrioventricular','CN_Sinoatrial','V_Venacava_S','Valve_Aortic','Valve_Mitral',

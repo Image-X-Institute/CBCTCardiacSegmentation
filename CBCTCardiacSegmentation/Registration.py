@@ -14,7 +14,7 @@ from subprocess import run
 class VolumeRegistration:
 
     def __init__(self, RegOutputDir='', ParamDir='', RigidParamFile='', NonRigidParamFile='', InverseParamFile='',
-                 RigidNonRigidParamFile='',TranslationParamFile='',GPUEnabled=False):
+                 RigidNonRigidParamFile='',TranslationParamFile='',ElastixDir='',GPUEnabled=False):
 
         if not ParamDir:
             #If no elastix parameter directory defined then get the one
@@ -25,6 +25,11 @@ class VolumeRegistration:
         assert Path(ParamDir).exists(), 'Elastix parameter directory {} does not exist'.format(ParamDir)
 
         self.RegOutputDir = RegOutputDir
+
+        if platform.system() == 'Linux':
+            assert not(not ElastixDir),'Directory to elastix bin/lib files needs to be added for linux'
+
+        self.ElastixDir = ElastixDir
 
         if not ParamDir:
             self.RigidParamFile = RigidParamFile
@@ -157,7 +162,7 @@ class VolumeRegistration:
     def CallFunctionFromCmdLine(self,CmdStr):
         # Run command from terminal
         if platform.system() == 'Linux':
-            run(CmdStr, shell=True, env={"PATH": '/home/mark/elastix/bin', "LD_LIBRARY_PATH": '/home/mark/elastix/lib'})
+            run(CmdStr, shell=True, env={"PATH": os.path.join(self.ElastixDir,'bin'), "LD_LIBRARY_PATH": os.path.join(self.ElastixDir,'lib')})
         else:
             run(CmdStr)
 

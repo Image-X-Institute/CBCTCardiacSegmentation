@@ -27,6 +27,7 @@ from platipy.imaging.projects.nnunet.run import run_segmentation
 
 
 def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',SegmentationMethod='Synthetic',PlanningCTDir='',ElastixParamDir='',StructFile='',
+                            ElastixRunDir = '',
                             HeartPadDistance=30,
                             KeepTempFiles=False):
     
@@ -68,7 +69,8 @@ def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',Segmentation
     Register Images to prepare for Segmentation
     """
     if not(SegmentationMethod == 'Direct'):        
-        VolReg = VolumeRegistration(RegOutputDir=TempDir,ParamDir=ElastixParamDir)
+        VolReg = VolumeRegistration(RegOutputDir=TempDir,ParamDir=ElastixParamDir,
+                                    ElastixDir=ElastixRunDir)
     
         #Align PlanningCT Volume to CBCT Volume
         print('Initial Alignment of Planning CT File to CBCT File')
@@ -179,6 +181,7 @@ if __name__ == '__main__':
     parser.add_argument('--SegmentationMethod',default='Synthetic',type=str,help='The method used to segment the CBCT image {Synthetic|Transform|Direct}. Default is Synthetic')
     parser.add_argument('--PlanningCTDir',type=str, default='',help='Location of the Planning CT that is to be segmented. Can be a Dicom Series or Volume file. Default is None')
     parser.add_argument('--ElastixParamDir',type=str,default='',help='Location of the elastix parameter files used for the registrations. Default is the parameters is the provided ElastixParameterFiles')
+    parser.add_argument('--ElastixRunDir',type=str,default='',help='Location of the bin and lib directories from the installed/downaloded version of elastix to be used. Needed for linux implementations')
     parser.add_argument('--StructFile',type=str,default='',help='Location of the structures contoured from the planning CT File. Default is None')
     parser.add_argument('--KeepTempFiles',action='store_true',help='If true the temporary files and directories created will not be deleted. If False these files will be deleted.')
     
