@@ -151,11 +151,12 @@ def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',Segmentation
     """
     Convert the segmentations to Dicom
     """
-    print('Converting segmentations to Dicom Format')
-
-    DcmOutputDir = os.path.join(OutputDir, 'OutputSegmentations_Dicom')
-    Path(DcmOutputDir).mkdir(exist_ok=True)
-    WriteDicomStructs(SubstructureOutputDir, CBCTDir, DcmOutputDir)
+    if os.path.is_dir(CBCTDir):
+        print('Converting segmentations to Dicom Format')
+    
+        DcmOutputDir = os.path.join(OutputDir, 'OutputSegmentations_Dicom')
+        Path(DcmOutputDir).mkdir(exist_ok=True)
+        WriteDicomStructs(SubstructureOutputDir, CBCTDir, DcmOutputDir)
 
     # Delete temporary dicom files
     if not KeepTempFiles:
