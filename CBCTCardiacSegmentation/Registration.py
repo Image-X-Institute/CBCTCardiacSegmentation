@@ -28,6 +28,7 @@ class VolumeRegistration:
 
         if platform.system() == 'Linux':
             assert not(not ElastixDir),'Directory to elastix bin/lib files needs to be added for linux'
+            assert Path(os.path.join(ElastixDir,'bin','elastix.exe')).exists(), 'Elastix Cannot be found at {}'.format(os.path.join(ElastixDir,'bin','elastix.exe'))
 
         self.ElastixDir = ElastixDir
 
