@@ -31,6 +31,11 @@ class VolumeRegistration:
 
         self.ElastixDir = ElastixDir
 
+        if not (not ElastixDir):
+            print('Elastix run in directory {}'.format(self.ElastixDir))
+            CmdStr = 'elastix -h'
+            self.CallFunctionFromCmdLine(CmdStr)
+
         if not ParamDir:
             self.RigidParamFile = RigidParamFile
             self.NonRigidParamFile = NonRigidParamFile
