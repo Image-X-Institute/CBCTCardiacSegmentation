@@ -29,7 +29,7 @@ sys.path.insert(0, str(this_file_loc.parent.parent))
 from CBCTCardiacSegmentation.CreateCBCTSegmentations import CreateCBCTSegmentations
 from CBCTCardiacSegmentation.SegUtil import DoDicomProcessing 
 from CBCTCardiacSegmentation.DicomHelper import WriteDicomStructs
-"""
+
 def test_DicomProcessing():
     # Download the test data
     data_path = get_lung_dicom()
@@ -114,7 +114,7 @@ def test_BadSegMethodInput():
     
     rmtree(data_path) 
     rmtree(OutputDir) 
-"""
+
 def test_NiftiCBCTSegmentationGeneration():
     
     # Download the test data
@@ -199,7 +199,7 @@ def test_DicomCBCTSegmentationGeneration():
         rmtree(OutputDir)    
         
 """
-"""
+
 def test_NiftiToDicomStruct():
     
     data_path = get_lung_dicom()
@@ -222,4 +222,3 @@ def test_NiftiToDicomStruct():
     
     rmtree(data_path) 
     rmtree(OutputDir)
-"""
