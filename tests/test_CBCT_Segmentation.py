@@ -135,7 +135,7 @@ def test_NiftiCBCTSegmentationGeneration():
     
     #Define Elastix directories
     home_dir = Path(os.path.expanduser('~'))  # may have to update for github system
-    elastix_dir = home_dir / 'ElastixDownload' / 'elastix-5.0.1-linux'
+    elastix_dir = home_dir / 'elastix' / 'elastix-5.0.1-linux'
     
     assert Path(elastix_dir).exists(),'Elastix directory {} does not exist'.format(elastix_dir)
     
