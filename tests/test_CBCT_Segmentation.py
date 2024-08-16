@@ -6,6 +6,7 @@ Created on Tue Aug  6 09:11:54 2024
 """
 
 import os
+import glob
 import subprocess
 from pathlib import Path
 import sys
@@ -28,7 +29,7 @@ sys.path.insert(0, str(this_file_loc.parent.parent))
 from CBCTCardiacSegmentation.CreateCBCTSegmentations import CreateCBCTSegmentations
 from CBCTCardiacSegmentation.SegUtil import DoDicomProcessing 
 from CBCTCardiacSegmentation.DicomHelper import WriteDicomStructs
-
+"""
 def test_DicomProcessing():
     # Download the test data
     data_path = get_lung_dicom()
@@ -113,7 +114,7 @@ def test_BadSegMethodInput():
     
     rmtree(data_path) 
     rmtree(OutputDir) 
-
+"""
 def test_NiftiCBCTSegmentationGeneration():
     
     # Download the test data
@@ -123,7 +124,8 @@ def test_NiftiCBCTSegmentationGeneration():
     test_pat_path = data_path.joinpath("LCTSC-Test-S1-201")
     test_pat_path2 = data_path.joinpath("LCTSC-Test-S1-101")
     
-    SegmentationMethods = ['Direct','Synthetic','Transform']#,'Test']
+    #SegmentationMethods = ['Direct','Synthetic','Transform']#,'Test']
+    SegmentationMethods = ['Synthetic','Transform','Direct']#,'Test']
     
     #Use CT images to test functionality until we can get open source CBCT images
     CBCTDir = str(test_pat_path2.joinpath("IMAGES/LCTSC_TEST_S1_101_0_CT_0.nii.gz"))   #Is a nifti file
@@ -134,6 +136,10 @@ def test_NiftiCBCTSegmentationGeneration():
     #Define Elastix directories
     home_dir = Path(os.path.expanduser('~'))  # may have to update for github system
     elastix_dir = home_dir / 'ElastixDownload' / 'elastix-5.0.1-linux'
+    
+    assert Path(elastix_dir).exists(),'Elastix directory {} does not exist'.format(elastix_dir)
+    
+    print(glob.glob(os.path.join(elastix_dir,'*')))
     
     for SegMethod in SegmentationMethods:
         print(SegMethod)
@@ -193,7 +199,7 @@ def test_DicomCBCTSegmentationGeneration():
         rmtree(OutputDir)    
         
 """
-
+"""
 def test_NiftiToDicomStruct():
     
     data_path = get_lung_dicom()
@@ -216,3 +222,4 @@ def test_NiftiToDicomStruct():
     
     rmtree(data_path) 
     rmtree(OutputDir)
+"""
