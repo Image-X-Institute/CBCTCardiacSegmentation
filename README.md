@@ -12,7 +12,7 @@ This code will generate cardiac segmentations in CBCT images. The input is dicom
 
 ## Setup/Build/Install
 
-The module will soon be able to be installed using pip:
+The module can installed using pip:
 
 ```
 pip install CBCTCardiacSegmentation
