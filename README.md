@@ -20,7 +20,7 @@ pip install CBCTCardiacSegmentation
 
 This code uses the platipy repo (https://github.com/pyplati/platipy). If the platipy module is not automatically installed when installing the CTHeadDeformation code, the platipy library can be installed separately using the installation instructions (https://pyplati.github.io/platipy/getting_started.html). Make sure to also include the cardiac module for platipy (platipy[cardiac])
 
-Install elastix (https://elastix.lumc.nl/index.php)
+Install elastix (https://elastix.lumc.nl/index.php) (https://github.com/SuperElastix/elastix/wiki)
 
 ## Usage
 
