@@ -164,16 +164,6 @@ def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',Segmentation
     if not KeepTempFiles:
         shutil.rmtree(TempDir)
 
-#CBCTDir = "Z://2RESEARCH/1_ClinicalData/RAVENTA/Mannheim/Patient CBCT images/PAT01/Fx1"
-#PlanningCTDir = "Z://2RESEARCH/1_ClinicalData/RAVENTA/Mannheim/Patient CT images/Planning CT/PAT01"
-#ElastixParamDir = "C://Users/mgar5380/Documents/GitHub/IGT/MATLABModules/Registration/ElastixParameterFiles"
-#CBCTDir = "/media/mark/One Touch/RAVENTA/Mannheim/Patient CBCT images/PAT01/Fx1"
-#PlanningCTDir = "/media/mark/One Touch/RAVENTA/Mannheim/Patient CT images/PAT01"
-#ElastixParamDir = "/media/mark/One Touch/ElastixParameterFiles"
-#OutputDir = "/media/mark/One Touch/RAVENTA/CBCTSegmentationTest"
-#SegmentationMethod='Transform'
-#CreateCBCTSegmentations(CBCTDir)#, PlanningCTDir=PlanningCTDir, ElastixParamDir=ElastixParamDir, SegmentationMethod=SegmentationMethod)
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Function for segmenting cardiac structures on CBCT images/volumes.')
     parser.add_argument('--CBCTDir',required=True,type=str, help='Location of the Cone-beam CT that is to be segmented. Can be a Dicom Series or Volume file.')
