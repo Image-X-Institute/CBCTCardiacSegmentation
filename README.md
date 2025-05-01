@@ -51,7 +51,7 @@ CreateCBCTSegmentations(CBCTDicomDir,OutputDir=OutputDir,PlanningCTDir=CTDicomDi
 ### Run in a command line
 
 In a command line (such as anaconda command prompt) navigate to the directory that the CTHeadDeformation repo was cloned to and run 
-```python CreateCBCTSegmentations.py <CBCTDicomDir> --OutputDir <OutputDir> --PlanningCTDir <CTDicomDir>``` 
+```python CreateCBCTSegmentations.py <CBCTDicomDir> --OutputDir <OutputDir> --PlanningCTDir <CTDicomDir>```  
 
 ### Function Options
  A summary of the input options are shown below
