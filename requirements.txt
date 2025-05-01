@@ -1,7 +1,7 @@
 numpy==1.22.4
 platipy
-pip install platipy[cardiac]
-pip install platipy[nnunet]
-pip install platipy[backend]
+platipy[cardiac]
+platipy[nnunet]
+platipy[backend]
 matplotlib
 argparse
