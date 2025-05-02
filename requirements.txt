@@ -1,5 +1,10 @@
 numpy==1.22.4
+torch==2.5.1 
+torchvision==0.20.1 
+torchaudio==2.5.1
 platipy
 platipy[cardiac]
+platipy[nnunet]
+platipy[backend]
 matplotlib
 argparse
