@@ -23,8 +23,8 @@ from CBCTCardiacSegmentation.DicomHelper import PrepareCTData, WriteDicomStructs
 from CBCTCardiacSegmentation.Registration import VolumeRegistration
 from CBCTCardiacSegmentation.SegUtil import CentreImage, GenerateCardiacStructures, PadBinaryVol
 
-from platipy.imaging.projects.nnunet.run import run_segmentation
-
+from platipy.imaging.projects.nnunet.run import run_segmentation,NNUNET_SETTINGS_DEFAULTS
+from platipy.imaging.projects.cardiac.run import install_open_atlas
 
 def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',SegmentationMethod='Synthetic',PlanningCTDir='',ElastixParamDir='',StructFile='',
                             ElastixRunDir = '',
@@ -94,9 +94,17 @@ def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',Segmentation
             sitk.WriteImage(HeartImg,HeartSegmentationFile)
 
         else:
-            HeartSegImg = run_segmentation(sitk.ReadImage(PlanningCTNiftiFile))
-            HeartSegmentationFile = os.path.join(TempDir, 'HeartSegmentation.mha')
-            sitk.WriteImage(HeartSegImg['Struct_0'], HeartSegmentationFile)
+            # Make sure atlas path exists, if not fetch it if fetch open atlas setting is true
+            atlas_path = Path(NNUNET_SETTINGS_DEFAULTS["cardiac_settings"]["atlas_settings"]["atlas_path"])
+            if not atlas_path.exists() or len(list(atlas_path.glob("*"))) == 0:
+                if NNUNET_SETTINGS_DEFAULTS["fetch_open_atlas"]:
+                    # Fetch data from Zenodo
+                    install_open_atlas(atlas_path)
+                else:
+                    raise SystemError(f"No atlas exists at {atlas_path}")
+                    HeartSegImg = run_segmentation(sitk.ReadImage(PlanningCTNiftiFile),NNUNET_SETTINGS_DEFAULTS)
+                    HeartSegmentationFile = os.path.join(TempDir, 'HeartSegmentation.mha')
+                    sitk.WriteImage(HeartSegImg['Struct_0'], HeartSegmentationFile)
 
         #Extend Heart Mask
         PaddedHeartFile = os.path.join(TempDir, 'PaddedHeartSegmentation.mha')
