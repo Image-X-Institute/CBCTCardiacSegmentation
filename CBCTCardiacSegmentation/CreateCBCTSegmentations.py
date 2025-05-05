@@ -96,7 +96,7 @@ def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',Segmentation
         else:
             # Make sure atlas path exists, if not fetch it if fetch open atlas setting is true
             #atlas_path = Path(NNUNET_SETTINGS_DEFAULTS["cardiac_settings"]["atlas_settings"]["atlas_path"])
-            atlas_path = Path(CARDIAC_SETTINGS_DEFAULTS["cardiac_settings"]["atlas_settings"]["atlas_path"])
+            atlas_path = Path(CARDIAC_SETTINGS_DEFAULTS["atlas_settings"]["atlas_path"])
             if not atlas_path.exists() or len(list(atlas_path.glob("*"))) == 0:
                 #if NNUNET_SETTINGS_DEFAULTS["fetch_open_atlas"]:
                 if CARDIAC_SETTINGS_DEFAULTS["fetch_open_atlas"]:
