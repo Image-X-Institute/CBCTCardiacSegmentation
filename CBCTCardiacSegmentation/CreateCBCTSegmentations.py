@@ -106,7 +106,7 @@ def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',Segmentation
                     raise SystemError(f"No atlas exists at {atlas_path}")
            
             #HeartSegImg = run_segmentation(sitk.ReadImage(PlanningCTNiftiFile),NNUNET_SETTINGS_DEFAULTS)
-            HeartSegImg = run_segmentation(sitk.ReadImage(PlanningCTNiftiFile),HYBRID_SETTINGS_DEFAULTS["nnunet_settings"]])
+            HeartSegImg = run_segmentation(sitk.ReadImage(PlanningCTNiftiFile),HYBRID_SETTINGS_DEFAULTS["nnunet_settings"])
             HeartSegmentationFile = os.path.join(TempDir, 'HeartSegmentation.mha')
             sitk.WriteImage(HeartSegImg['Struct_0'], HeartSegmentationFile)
 
