@@ -24,7 +24,7 @@ from CBCTCardiacSegmentation.Registration import VolumeRegistration
 from CBCTCardiacSegmentation.SegUtil import CentreImage, GenerateCardiacStructures, PadBinaryVol
 
 from platipy.imaging.projects.nnunet.run import run_segmentation,NNUNET_SETTINGS_DEFAULTS
-from platipy.imaging.projects.cardiac.run import install_open_atlas
+from platipy.imaging.projects.cardiac.run import install_open_atlas,CARDIAC_SETTINGS_DEFAULTS
 
 def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',SegmentationMethod='Synthetic',PlanningCTDir='',ElastixParamDir='',StructFile='',
                             ElastixRunDir = '',
@@ -95,15 +95,18 @@ def CreateCBCTSegmentations(CBCTDir,OutputDir='./CBCTSegmentations',Segmentation
 
         else:
             # Make sure atlas path exists, if not fetch it if fetch open atlas setting is true
-            atlas_path = Path(NNUNET_SETTINGS_DEFAULTS["cardiac_settings"]["atlas_settings"]["atlas_path"])
+            #atlas_path = Path(NNUNET_SETTINGS_DEFAULTS["cardiac_settings"]["atlas_settings"]["atlas_path"])
+            atlas_path = Path(CARDIAC_SETTINGS_DEFAULTS["cardiac_settings"]["atlas_settings"]["atlas_path"])
             if not atlas_path.exists() or len(list(atlas_path.glob("*"))) == 0:
-                if NNUNET_SETTINGS_DEFAULTS["fetch_open_atlas"]:
+                #if NNUNET_SETTINGS_DEFAULTS["fetch_open_atlas"]:
+                if CARDIAC_SETTINGS_DEFAULTS["fetch_open_atlas"]:
                     # Fetch data from Zenodo
                     install_open_atlas(atlas_path)
                 else:
                     raise SystemError(f"No atlas exists at {atlas_path}")
            
-            HeartSegImg = run_segmentation(sitk.ReadImage(PlanningCTNiftiFile),NNUNET_SETTINGS_DEFAULTS)
+            #HeartSegImg = run_segmentation(sitk.ReadImage(PlanningCTNiftiFile),NNUNET_SETTINGS_DEFAULTS)
+            HeartSegImg = run_segmentation(sitk.ReadImage(PlanningCTNiftiFile),CARDIAC_SETTINGS_DEFAULTS)
             HeartSegmentationFile = os.path.join(TempDir, 'HeartSegmentation.mha')
             sitk.WriteImage(HeartSegImg['Struct_0'], HeartSegmentationFile)
 
