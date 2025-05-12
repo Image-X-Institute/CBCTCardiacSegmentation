@@ -8,7 +8,7 @@ Created on Tue May  6 13:25:54 2025
 import SimpleITK as sitk
 from platipy.imaging.tests.data import get_lung_nifti
 from platipy.imaging.projects.cardiac.run import run_hybrid_segmentation
-
+ 
 def TestSegmentation():
 
     # Download the test data
