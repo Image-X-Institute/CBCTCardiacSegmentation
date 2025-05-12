@@ -19,13 +19,13 @@ from pathlib import Path
 #from torch.cuda import is_available
 
 
-#from CBCTCardiacSegmentation.DicomHelper import PrepareCTData, WriteDicomStructs
-#from CBCTCardiacSegmentation.Registration import VolumeRegistration
-#from CBCTCardiacSegmentation.SegUtil import CentreImage, GenerateCardiacStructures, PadBinaryVol
+from CBCTCardiacSegmentation.DicomHelper import PrepareCTData, WriteDicomStructs
+from CBCTCardiacSegmentation.Registration import VolumeRegistration
+from CBCTCardiacSegmentation.SegUtil import CentreImage, GenerateCardiacStructures, PadBinaryVol
 
-from DicomHelper import PrepareCTData, WriteDicomStructs
-from Registration import VolumeRegistration
-from SegUtil import CentreImage, GenerateCardiacStructures, PadBinaryVol
+#from DicomHelper import PrepareCTData, WriteDicomStructs
+#from Registration import VolumeRegistration
+#from SegUtil import CentreImage, GenerateCardiacStructures, PadBinaryVol
 
 
 from platipy.imaging.projects.nnunet.run import run_segmentation
