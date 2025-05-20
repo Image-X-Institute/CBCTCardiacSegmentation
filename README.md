@@ -66,9 +66,11 @@ In a command line (such as anaconda command prompt) navigate to the directory th
                         Default is None. (Optional)
   --ElastixParamDir ELASTIXPARAMDIR
                         Location of the elastix parameter files used for the registrations. Default is the parameters
-                        is the provided ElastixParameterFiles. (Optional)
+                        in the provided ElastixParameterFiles folder. (Optional)
   --StructFile STRUCTFILE
                         Location of the structures contoured from the planning CT File. Default is None
+  --ElastixRunDir ElastixRunDir
+						Location of the bin and lib directories from the installed/downaloded version of elastix to be used. Needed for linux implementations
   --KeepTempFiles       If true the temporary files and directories created will not be deleted. If False these files
                         will be deleted. (Optional)
  ```
